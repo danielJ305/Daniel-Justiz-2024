@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+h1,h2,h3,h4,h5,button,a,li,label {
+font-family: var(--font-monda);
+}
+
+p {
+  font-family: var(--font-jura);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,4 +33,22 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+#about-me, #work, #experience, #contact {
+  min-height: 80vh;
+}
+
+#about-me {
+  background: rgb(11,25,44);
+  background: linear-gradient(0deg, rgba(11,25,44,1) 20%, rgba(30,62,98,1) 100%);
+}
+
+#work {
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(11,25,44,1) 100%);
+}
+
+#contact {
+  background: rgb(0,0,0);
 }

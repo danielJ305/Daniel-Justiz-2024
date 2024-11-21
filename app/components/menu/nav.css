@@ -1,0 +1,40 @@
+.menu-bar a, .menu-open {
+    cursor: pointer;
+}
+
+.menu-bar {
+    position: fixed;
+    left: 0;
+    padding:2em;
+    z-index: 10;
+}
+
+.menu-overlay {
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    padding: 2em;
+    background-color: #000000;
+    z-index: 2;
+    clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+}
+
+.menu-overlay-bar {
+    min-height: 100%;
+}
+
+.menu-close-icon p {
+    color: #ebeff2;
+    font-size: 50px;
+    -webkit-text-stroke: 5px #ebeff2;
+    line-height: 70%;
+    margin: 2rem;
+}
+
+.menu-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1rem;
+}
