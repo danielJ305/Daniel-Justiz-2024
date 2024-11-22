@@ -84,7 +84,7 @@ export function WorkShowcase() {
   return (
     <div
       ref={togglerContainerRef}
-      className='container w-full h-auto m-4 md:m-8 lg:m-12 sm:pt-[8rem] md:pt-[4rem] lg:pt-0 flex flex-col z-10'
+      className='container w-full h-auto m-4 md:m-8 lg:m-12 pt-32 md:pt-[4rem]  lg:pt-40 flex flex-col z-10'
     >
       <div className='flex mb-10 items-center'>
         <div

@@ -15,7 +15,7 @@ export function WorkDeveloper() {
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/equitus-ai.png'
-            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}
@@ -43,7 +43,7 @@ export function WorkDeveloper() {
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/go-freight-hub.png'
-            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}
@@ -71,7 +71,7 @@ export function WorkDeveloper() {
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/fiu-mockup.png'
-            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}
