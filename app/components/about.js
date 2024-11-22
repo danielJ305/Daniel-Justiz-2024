@@ -35,7 +35,7 @@ export function AboutIntro() {
     return (
       <div
         ref={container2}
-        className='flex flex-row flex-wrap justify-center w-full mb-12 md:m-6 md:mb-0 lg:m-12 lg:mt-0 md lg:mt-0 mt-32'
+        className='flex flex-row flex-wrap justify-center w-full mb-12 lg:mb-4 md:m-6 md:mb-0 lg:m-12 lg:mt-0 md lg:mt-0 mt-32'
       >
         <div className='md:basis-1/2 m-2 lg:m-4 p-4 bg-[#0B192C]/50 rounded-md rounded-md w-full lg:p-12 flex flex-col justify-between h-full md:h-[36rem] lg:h-[38rem] grow lg:grow-0'>
           <div>
