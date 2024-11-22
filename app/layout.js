@@ -1,7 +1,8 @@
 import { Monda, Jura } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/menu/nav";
-
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const monda = Monda({
   variable: "--font-monda",
@@ -33,6 +34,8 @@ export default function RootLayout({ children }) {
       <body className={`${monda.variable} ${jura.variable} antialiased`}>
         <Navbar />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
