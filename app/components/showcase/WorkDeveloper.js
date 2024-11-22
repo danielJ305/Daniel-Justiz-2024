@@ -7,15 +7,15 @@ import { CiLogout } from "react-icons/ci";
 
 export function WorkDeveloper() {
   return (
-    <div className='section_container lg:h-[42rem] flex flex-col lg:flex-row '>
+    <div className='section_container h-full flex flex-col lg:flex-row '>
       <div
-        className='relative section_col basis-1/3 flex lg:mr-6 mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[50vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 lg:grow'
+        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
+             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
       >
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/equitus-ai.png'
-            className='section_col_image h-full lg:h-[50vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}
@@ -37,13 +37,13 @@ export function WorkDeveloper() {
       </div>
 
       <div
-        className='relative section_col basis-1/3 flex lg:mr-6 mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[50vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 lg:grow'
+        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
+             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
       >
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/go-freight-hub.png'
-            className='section_col_image h-full lg:h-[50vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}
@@ -65,13 +65,13 @@ export function WorkDeveloper() {
       </div>
 
       <div
-        className='relative section_col basis-1/3 flex lg:mr-6 mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[50vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 lg:grow'
+        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
+             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
       >
         <div className='section_col_media relative lg:absolute'>
           <Image
             src='/webdev/fiu-mockup.png'
-            className='section_col_image h-full lg:h-[50vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
+            className='section_col_image h-full lg:h-[60vh] lg:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
             alt=''
             width={500}
             height={500}

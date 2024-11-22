@@ -84,7 +84,7 @@ export function WorkShowcase() {
   return (
     <div
       ref={togglerContainerRef}
-      className='container w-full h-auto m-4 md:m-8 lg:m-12 sm:pt-[8rem] md:pt-[4rem] lg:pt-0 flex flex-col'
+      className='container w-full h-auto m-4 md:m-8 lg:m-12 sm:pt-[8rem] md:pt-[4rem] lg:pt-0 flex flex-col z-10'
     >
       <div className='flex mb-10 items-center'>
         <div
@@ -101,10 +101,10 @@ export function WorkShowcase() {
           ></div>
         </div>
         <div className='flex justify-between grow'>
-          <p className='text-2xl lg:text-3xl ml-6 hand-point'>
+          <p className='text-2xl lg:text-3xl ml-6 hand-point self-center'>
             <FaRegHandPointLeft />
           </p>
-          <p className='text-5xl lg:text-5xl ml-6 text-right'>
+          <p className='text-4xl md:text-5xl ml-6 text-right'>
             {active ? "Websites" : "Graphic Design"}
           </p>
         </div>

@@ -6,18 +6,24 @@ import Footer from './components/footer';
 
 export default function Home() {
   return (
-    <div className='h-full'>
-      <section id="about-me" className='flex justify-center items-center'>
+    <div className='h-full overflow-hidden'>
+      <section id='about-me' className='flex justify-center items-center'>
         <AboutIntro />
       </section>
-      <section id="work" className='flex justify-center items-center'>
+      <section id='work' className='flex justify-center items-center'>
         <WorkShowcase />
       </section>
-      <section id="experience-proof" className='bg-gray-1000 flex justify-center items-center'>
+      <section
+        id='experience-proof'
+        className='flex justify-center items-center'
+      >
         <Experience />
       </section>
-      <section id="contact" className='bg-gray-900 flex justify-center items-center'>
+      <section id='contact' className='flex justify-center items-center relative'>
         <Footer />
+        <div class='shape1'></div>
+        <div class='shape2'></div>
+        <div class='shape3'></div>
       </section>
     </div>
   );

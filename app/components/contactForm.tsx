@@ -52,7 +52,7 @@ export default function ContactUsForm() {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex w-full flex-col lg:pr-20 mx-auto'
+        className='flex w-full flex-col md:pr-10 lg:pr-20 max-w-[22rem] md:max-w-full'
       >
         <input
           className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
@@ -92,7 +92,9 @@ export default function ContactUsForm() {
           <div className='text-red-500'>{errors.root.message}</div>
         )}
         {isSubmitted && (
-          <div className='transition-all text-green-500 pt-4'>Your message was successfully submitted! Thank you!</div>
+          <div className='transition-all text-green-500 pt-4'>
+            Your message was successfully submitted! Thank you!
+          </div>
         )}
       </form>
     </div>
