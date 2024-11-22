@@ -6,7 +6,6 @@ import "./nav.css";
 import { Sling as Hamburger } from 'hamburger-react';
 
 import {
-  RiArrowDropLeftFill,
   RiBehanceFill,
   RiGithubFill,
   RiInstagramLine,
@@ -129,8 +128,6 @@ export function Navbar() {
   useGSAP(
     () => {
       gsap.set(".menu-link-item-holder", { y: 75 });
-
-      let body = document.querySelector('body')
 
       tl.current = gsap
         .timeline({ paused: true })

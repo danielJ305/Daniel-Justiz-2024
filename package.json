@@ -12,6 +12,7 @@
     "@babel/core": "^7.26.0",
     "@gsap/react": "^2.1.1",
     "@hookform/resolvers": "^3.9.1",
+    "@next/eslint-plugin-next": "^15.0.3",
     "@react-email/components": "^0.0.28",
     "gsap": "^3.12.5",
     "hamburger-react": "^2.5.1",
@@ -31,6 +32,7 @@
     "@types/react": "18.3.12",
     "eslint": "^8",
     "eslint-config-next": "^14.2.11",
+    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8",
     "prettier": "^3.0.0-alpha.6",
     "tailwindcss": "^3.4.1"

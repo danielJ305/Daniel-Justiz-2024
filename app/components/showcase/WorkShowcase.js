@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import WorkDeveloper from "./WorkDeveloper";
 import WorkGraphic from "./WorkGraphic";
 import "../../work.css";

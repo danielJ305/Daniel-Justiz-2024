@@ -12,11 +12,6 @@ import { useGSAP } from "@gsap/react";
 export function AboutIntro() {
     const container2 = useRef();
     const tl = useRef();
-    // window.onload = function() { 
-    //     let frame1 = document.getElementById('portfolio_1');
-        // console.log(frame1.contentWindow)
-        // frame1.contentWindow.scrollTo(0, frame1.contentDocument.body.scrollHeight);
-    // }
     useGSAP(
 
         () => {
@@ -75,7 +70,6 @@ export function AboutIntro() {
                 id='portfolio_1'
                 url='https://danieljustiz.myportfolio.com/'
                 title='Adobe Behance Graphic Design Portfolio'
-                // allowFullScreen="{true}"
                 height='100%'
                 width='100%'
                 scrolling='no'

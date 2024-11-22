@@ -5,28 +5,9 @@ import Iframe from 'react-iframe';
 
 
 export function WorkGraphic() {
-    // const portContainerRef = useRef(null)
-    // const portfolioContainer2 = document.getElementById('portfolio_2');
-    // const isFullSceen = document.fullscreenElement;
- 
-    // const fullScreenGraphicToggler = () => {
-    //     const portfolioContainer = portContainerRef.current;
-
-    //     if (isFullSceen) {
-    //         // Exit fullscreen and set scrolling to "no"
-    //         document.exitFullscreen();
-    //         // portfolioContainer.setAttribute("scrolling", "no");
-    //     } else {
-    //         // Enter fullscreen and set scrolling to "yes"
-    //         portfolioContainer.requestFullscreen();
-    //         // portfolioContainer.setAttribute("scrolling", "yes");
-    //     }
-    // };
-
-
     window.addEventListener("load", doStartup, false);
 
-    function doStartup(event) {
+    function doStartup() {
       document.fullscreenElement = document.fullscreenElement || document.mozFullscreenElement
                 || document.msFullscreenElement || document.webkitFullscreenDocument;
       document.exitFullscreen = document.exitFullscreen || document.mozExitFullscreen

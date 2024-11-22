@@ -32,7 +32,12 @@ export default function ContactUsForm() {
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      sendEmail(data);
+       const formData = new FormData();
+       formData.append("name", data.name);
+       formData.append("email", data.email);
+       formData.append("message", data.message);
+
+       sendEmail(formData);
     } catch (error) {
       setError("root", {
         message: "Failed to send, Please try again",
