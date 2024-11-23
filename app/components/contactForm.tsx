@@ -18,7 +18,7 @@ type FormFields = z.infer<typeof schema>;
 
 const ContactUsForm: React.FC = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null); // Captcha token state
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
 
   const {
     register,
@@ -32,13 +32,13 @@ const ContactUsForm: React.FC = () => {
 
   // Handle reCAPTCHA token generation
   const handleCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token); // Save the generated token
+    setCaptchaToken(token);
   };
 
   // Handle reCAPTCHA expiration
   const handleCaptchaExpired = () => {
-    setCaptchaToken(null); // Clear the token when expired
-    recaptchaRef.current?.reset(); // Reset the reCAPTCHA widget
+    setCaptchaToken(null);
+    recaptchaRef.current?.reset();
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
@@ -72,32 +72,36 @@ const ContactUsForm: React.FC = () => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col space-y-4 w-full max-w-lg mx-auto'
+        className='flex w-max px-4 md:px-0 md:w-full flex-col md:pr-10 lg:pr-20 md:max-w-full'
       >
         <input
           type='text'
           placeholder='Name'
           {...register("name")}
-          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
+          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
         />
-        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+        {errors.name && (
+          <div className='text-red-500'>{errors.name.message}</div>
+        )}
 
         <input
           type='email'
           placeholder='Email'
           {...register("email")}
-          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
+          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
         />
-        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+        {errors.email && (
+          <div className='text-red-500'>{errors.email.message}</div>
+        )}
 
         <textarea
-          placeholder='Message'
-          rows={4}
+          placeholder='Message Me'
+          rows={6}
           {...register("message")}
-          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
+          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-5 block w-full outline-none focus:border-stone-500 pl-2'
         />
         {errors.message && (
-          <p className='text-red-500'>{errors.message.message}</p>
+          <div className='text-red-500'>{errors.message.message}</div>
         )}
 
         {/* Visible reCAPTCHA */}
@@ -111,19 +115,19 @@ const ContactUsForm: React.FC = () => {
         <button
           type='submit'
           disabled={!captchaToken || isSubmitting}
-          className='bg-orange-500 text-white rounded px-4 py-2 hover:bg-orange-600 disabled:bg-gray-400'
+          className='ease-out duration-300 bg-slate-600 hover:bg-[#FF6500] px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
         >
-          {isSubmitting ? "Submitting..." : "Submit"}
+          {isSubmitting ? "Loading..." : "Submit"}
         </button>
 
         {errors.root && (
-          <p className='text-red-500 mt-2'>{errors.root.message}</p>
+          <div className='text-red-500'>{errors.root.message}</div>
         )}
 
         {isSubmitSuccessful && (
-          <p className='text-green-500 mt-2'>
-            Your message has been successfully submitted!
-          </p>
+          <div className='transition-all text-green-500 pt-4'>
+            Your message was successfully submitted! Thank you!
+          </div>
         )}
       </form>
     </div>
