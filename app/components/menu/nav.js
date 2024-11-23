@@ -119,7 +119,6 @@ export function Navbar() {
   const container = useRef();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const tl = useRef();
-
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -162,92 +161,113 @@ export function Navbar() {
 
   return (
     <aside ref={container}>
-      <div className="menu-logo">
-            <Link href={"http://localhost:3000/"}>
-              <LogoIcon />
-            </Link>
-          </div>
-      <div className="menu-container">
-        <div className="menu-bar w-screen sm:w-1/2 md:w-1/2 lg:w-1/4">
-          <div className="menu-open hover:text-amber-300" >
-            <Hamburger 
+      <div className='menu-logo'>
+        <Link href={"https://danieljustiz.com/"}>
+          <LogoIcon />
+        </Link>
+      </div>
+      <div className='menu-container'>
+        <div className='menu-bar w-screen sm:w-1/2 md:w-1/2 lg:w-1/4'>
+          <div className='menu-open hover:text-amber-300'>
+            <Hamburger
               toggled={isMenuOpen}
-              toggle={setIsMenuOpen} 
+              toggle={setIsMenuOpen}
               onClick={toggleMenu}
               size={48}
               rounded
-              label="Show menu"
-              className="hamburger-icon"
-              duration={0.6} />
+              label='Show menu'
+              className='hamburger-icon'
+              duration={0.6}
+            />
           </div>
-          
         </div>
 
-        <div className="menu-overlay w-screen sm:w-1/2 md:w-1/2 lg:w-1/4">
-          <div className="menu-overlay-bar absolute">
-            <div className="sidebar flex flex-col justify-between min-h-[80vh] mt-36">
-              <div className="sidebar--top-container">
-                <div className="top-container__social-list flex flex-col justify-start">
+        <div className='menu-overlay w-screen sm:w-1/2 md:w-1/2 lg:w-1/4'>
+          <div className='menu-overlay-bar absolute'>
+            <div className='sidebar flex flex-col justify-between min-h-[80vh] mt-36'>
+              <div className='sidebar--top-container'>
+                <div className='top-container__social-list flex flex-col justify-start'>
                   <Link
-                    href="https://www.linkedin.com/in/daniel-justiz-a76a3218a/"
-                    target="_blank"
+                    href='https://www.linkedin.com/in/daniel-justiz-a76a3218a/'
+                    target='_blank'
                   >
-                    <div className="pb-4 menu-link-item-holder">
-                    <RiLinkedinBoxLine className="size-8 hover:text-amber-300" />
+                    <div className='pb-4 menu-link-item-holder'>
+                      <RiLinkedinBoxLine className='size-8 hover:text-amber-300' />
                     </div>
                   </Link>
-                  <Link href="https://github.com/danielJ305" target="_blank">
-                    <div className="pb-4 menu-link-item-holder">
-                    <RiGithubFill className="size-8 hover:text-amber-300"/>
-                    </div>
-                  </Link>
-                  <Link
-                    href="https://www.instagram.com/danieljustfish/"
-                    target="_blank"
-                  >
-                    <div className="pb-4 menu-link-item-holder">
-                    <RiInstagramLine className="size-8 hover:text-amber-300"/>
+                  <Link href='https://github.com/danielJ305' target='_blank'>
+                    <div className='pb-4 menu-link-item-holder'>
+                      <RiGithubFill className='size-8 hover:text-amber-300' />
                     </div>
                   </Link>
                   <Link
-                    href="https://www.behance.net/danieljustizMedia/"
-                    target="_blank"
+                    href='https://www.instagram.com/danieljustfish/'
+                    target='_blank'
                   >
-                    <div className="pb-4 menu-link-item-holder">
-                    <RiBehanceFill className="size-8 hover:text-amber-300"/>
+                    <div className='pb-4 menu-link-item-holder'>
+                      <RiInstagramLine className='size-8 hover:text-amber-300' />
+                    </div>
+                  </Link>
+                  <Link
+                    href='https://www.behance.net/danieljustizMedia/'
+                    target='_blank'
+                  >
+                    <div className='pb-4 menu-link-item-holder'>
+                      <RiBehanceFill className='size-8 hover:text-amber-300' />
                     </div>
                   </Link>
                 </div>
               </div>
-              <div className="sidebar--mid-container">
-                <div className="sidebar--mid-container">
-                  <div className="mid-container__navigation-list flex flex-col">
-                    <Link scroll={true} href="#about-me" className="menu-link-item-holder py-4 hover:text-amber-300">
+              <div className='sidebar--mid-container'>
+                <div className='sidebar--mid-container'>
+                  <div className='mid-container__navigation-list flex flex-col'>
+                    <Link
+                      scroll={true}
+                      toggle={setIsMenuOpen}
+                      onClick={toggleMenu}
+                      href='#about-me'
+                      className='menu-link-item-holder py-4 hover:text-amber-300'
+                    >
                       About Me -
                     </Link>
-                    <Link scroll={true} href="#work" className="menu-link-item-holder py-4 hover:text-amber-300">
+                    <Link
+                      scroll={true}
+                      toggle={setIsMenuOpen}
+                      onClick={toggleMenu}
+                      href='#work'
+                      className='menu-link-item-holder py-4 hover:text-amber-300'
+                    >
                       My Work -
                     </Link>
-                    <Link scroll={true} href="#contact" className="menu-link-item-holder py-4 hover:text-amber-300">
+                    <Link
+                      scroll={true}
+                      toggle={setIsMenuOpen}
+                      onClick={toggleMenu}
+                      href='#contact'
+                      className='menu-link-item-holder py-4 hover:text-amber-300'
+                    >
                       Contact Me -
                     </Link>
                   </div>
                 </div>
               </div>
 
-              <div className="sidebar--bottom-container flex flex-col">
-                <div className="menu-link-item-holder">
+              <div className='sidebar--bottom-container flex flex-col'>
+                {/* <div className="menu-link-item-holder">
                   <a target="_blank" className="bottom-container__resume hover:text-amber-300 cursor-pointer">
                     Resume
                   </a>
+                </div> */}
+                <div className='menu-link-item-holder'>
+                  <Link
+                    className='hover:text-amber-300'
+                    href='mailto:danieljustiz9508@gmail.com'
+                  >
+                    danieljustiz9508@gmail.com
+                  </Link>
                 </div>
-                <div className="menu-link-item-holder">
-                <Link className="hover:text-amber-300" href="mailto:danieljustiz9508@gmail.com">
-                  danieljustiz9508@gmail.com
-                </Link>
-                </div>
-                <div className="menu-link-item-holder">
-                <p>Tampa, FL</p>
+                <div className='menu-link-item-holder'>
+                  <p>Tampa, FL</p>
                 </div>
               </div>
             </div>

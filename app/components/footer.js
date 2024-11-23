@@ -43,9 +43,9 @@ export function Footer() {
     return (
       <div ref={containerRef} className='flex flex-col z-10'>
         <div className='contact-container flex flex-col md:flex-row container w-full h-full m-4 md:m-8 lg:m-12 pt-32 md:pt-32 lg:pt-44 pb-36 md:pb-72'>
-          <div className='basis-1/2'>
+          <div className='basis-1/2 order-2 md:order-1 md:mt-0 mt-6'>
             <div>
-              <p className='w-4/5 text-lg'>
+              <p className='w-11/12 lg:w-4/5 text-lg'>
                 Kindly leave a brief message detailing the type of service you
                 need. I look forward to assisting you!
               </p>
@@ -53,15 +53,15 @@ export function Footer() {
 
             <ContactForm />
           </div>
-          <div className='flex flex-col basis-1/2 mt-6 md:mt-0'>
+          <div className='flex flex-col basis-1/2 mt-6 md:mt-0 order-1 md:order-2'>
             <div className=''>
               <h2 className='text-lg'>Lets get to work!</h2>
               <h2 className='text-5xl md:text-6xl mb-4'>Contact Me</h2>
               <p className='w-11/12 lg:w-4/5 mt-8 text-lg'>
                 Looking to bring your brand to life with a stunning website or
-                captivating graphics? Whether you have a project in mind or just need
-                help getting started, let’s chat about how I can help make your
-                brand stand out. Reach out, and let’s create something
+                captivating graphics? Whether you have a project in mind or just
+                need help getting started, let’s chat about how I can help make
+                your brand stand out. Reach out, and let’s create something
                 exceptional together!{" "}
               </p>
               <ul>
@@ -118,7 +118,6 @@ export function Footer() {
             Github Repo
           </Link>
         </div>
-        
       </div>
     );
 }

@@ -86,7 +86,7 @@ const ContactUsForm: NextPage = () => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex w-full flex-col md:pr-10 lg:pr-20 max-w-[22rem] md:max-w-full'
+        className='flex w-fit md:w-full flex-col md:pr-10 lg:pr-20 md:max-w-full'
       >
         <input
           className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
