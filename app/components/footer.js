@@ -90,14 +90,14 @@ export function Footer() {
                     <RiGithubFill className='size-10 hover:text-amber-300' />
                   </div>
                 </Link>
-                <Link
+                {/* <Link
                   href='https://www.instagram.com/danieljustfish/'
                   target='_blank'
                 >
                   <div className='pr-8 menu-link-item-holder'>
                     <RiInstagramLine className='size-10 hover:text-amber-300' />
                   </div>
-                </Link>
+                </Link> */}
                 <Link
                   href='https://www.behance.net/danieljustizMedia/'
                   target='_blank'
