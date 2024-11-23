@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 import {
   RiBehanceFill,
   RiGithubFill,
-  RiInstagramLine,
+  // RiInstagramLine,
   RiLinkedinBoxLine,
 } from "react-icons/ri";
 
