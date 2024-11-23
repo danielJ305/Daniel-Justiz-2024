@@ -35,7 +35,7 @@ const ContactUsForm: NextPage = () => {
     async function handleCaptchaSubmission(token: string | null) {
       try {
         if (token) {
-          await fetch("/api/email", {
+          await fetch("/api", {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -55,7 +55,8 @@ const ContactUsForm: NextPage = () => {
     };
 
     function handleExpired() {
-      setIsVerified(false);
+      recaptchaRef.current.reset();
+      // setIsVerified(false);
     }
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
