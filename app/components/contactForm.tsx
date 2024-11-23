@@ -1,26 +1,24 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import ReCAPTCHA from "react-google-recaptcha";
-import type { NextPage } from "next";
 
-// Define the validation schema with Zod
+// Validation schema using Zod
 const schema = z.object({
   name: z.string().min(1, { message: "A name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
   message: z.string().min(12, { message: "Message is too short" }),
 });
 
-// Define the form fields type based on the schema
+// FormFields type based on the schema
 type FormFields = z.infer<typeof schema>;
 
-const ContactUsForm: NextPage = () => {
+const ContactUsForm: React.FC = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [token, setToken] = useState<string | null>(null); // Token state to track ReCAPTCHA validation
-  const [isVerified, setIsVerified] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null); // Captcha token state
 
   const {
     register,
@@ -32,26 +30,20 @@ const ContactUsForm: NextPage = () => {
     resolver: zodResolver(schema),
   });
 
-  // Handle ReCAPTCHA change event
-  const handleCaptchaChange = (newToken: string | null) => {
-    if (newToken) {
-      setToken(newToken); // Save the token
-      setIsVerified(true); // Mark as verified
-    } else {
-      setToken(null);
-      setIsVerified(false);
-    }
+  // Handle reCAPTCHA token generation
+  const handleCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token); // Save the generated token
   };
 
+  // Handle reCAPTCHA expiration
   const handleCaptchaExpired = () => {
-    recaptchaRef.current?.reset(); // Reset the ReCAPTCHA widget
-    setToken(null); // Clear the token
-    setIsVerified(false); // Mark as unverified
+    setCaptchaToken(null); // Clear the token when expired
+    recaptchaRef.current?.reset(); // Reset the reCAPTCHA widget
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    if (!token) {
-      setError("root", { message: "Captcha validation failed" });
+    if (!captchaToken) {
+      setError("root", { message: "Captcha validation is required" });
       return;
     }
 
@@ -59,18 +51,16 @@ const ContactUsForm: NextPage = () => {
       const response = await fetch("/api/email", {
         method: "POST",
         headers: {
-          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...data, token }), // Include the token in the request
+        body: JSON.stringify({ ...data, token: captchaToken }),
       });
 
       if (!response.ok) {
         throw new Error("Failed to send the email");
       }
 
-      // Reset the form on success
-      reset();
+      reset(); // Clear form fields after successful submission
     } catch (error) {
       setError("root", {
         message: error.message || "Failed to send, Please try again",
@@ -78,73 +68,62 @@ const ContactUsForm: NextPage = () => {
     }
   };
 
-  useEffect(() => {
-    if (isSubmitSuccessful) {
-      setTimeout(() => {
-        reset();
-      }, 3000);
-    }
-  }, [isSubmitSuccessful, reset]);
-
   return (
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex w-max px-4 md:px-0 md:w-full flex-col md:pr-10 lg:pr-20 md:max-w-full'
+        className='flex flex-col space-y-4 w-full max-w-lg mx-auto'
       >
         <input
-          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
           type='text'
           placeholder='Name'
           {...register("name")}
+          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
         />
-        {errors.name && (
-          <div className='text-red-500'>{errors.name.message}</div>
-        )}
+        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
 
         <input
-          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-3 h-14 block w-full outline-none focus:border-stone-500 pl-2'
           type='email'
           placeholder='Email'
           {...register("email")}
+          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
         />
-        {errors.email && (
-          <div className='text-red-500'>{errors.email.message}</div>
-        )}
+        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
 
         <textarea
-          className='bg-[rgba(0,0,0,0)] border-b-2 border-slate-200 mt-4 mb-5 block w-full outline-none focus:border-stone-500 pl-2'
-          placeholder='Message Me'
-          rows={6}
+          placeholder='Message'
+          rows={4}
           {...register("message")}
+          className='border border-gray-300 rounded p-2 focus:outline-none focus:ring focus:ring-orange-500'
         />
         {errors.message && (
-          <div className='text-red-500'>{errors.message.message}</div>
+          <p className='text-red-500'>{errors.message.message}</p>
         )}
 
+        {/* Visible reCAPTCHA */}
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
           ref={recaptchaRef}
-          onChange={handleCaptchaChange} // Triggered when user completes the ReCAPTCHA
-          onExpired={handleCaptchaExpired} // Triggered when the ReCAPTCHA token expires
+          onChange={handleCaptchaChange}
+          onExpired={handleCaptchaExpired}
         />
 
         <button
-          disabled={!isVerified || isSubmitting}
           type='submit'
-          className='ease-out duration-300 bg-slate-600 hover:bg-[#FF6500] px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
+          disabled={!captchaToken || isSubmitting}
+          className='bg-orange-500 text-white rounded px-4 py-2 hover:bg-orange-600 disabled:bg-gray-400'
         >
-          {isSubmitting ? "Loading..." : "Submit"}
+          {isSubmitting ? "Submitting..." : "Submit"}
         </button>
 
         {errors.root && (
-          <div className='text-red-500'>{errors.root.message}</div>
+          <p className='text-red-500 mt-2'>{errors.root.message}</p>
         )}
 
         {isSubmitSuccessful && (
-          <div className='transition-all text-green-500 pt-4'>
-            Your message was successfully submitted! Thank you!
-          </div>
+          <p className='text-green-500 mt-2'>
+            Your message has been successfully submitted!
+          </p>
         )}
       </form>
     </div>
