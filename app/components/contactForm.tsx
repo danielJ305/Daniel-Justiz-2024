@@ -35,7 +35,7 @@ const ContactUsForm: NextPage = () => {
     async function handleCaptchaSubmission(token: string | null) {
       try {
         if (token) {
-          await fetch("/api", {
+          await fetch("/api/email", {
             method: "POST",
             headers: {
               Accept: "application/json",

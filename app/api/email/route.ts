@@ -43,6 +43,12 @@ export async function POST(request: NextRequest) {
       });
     });
 
+     if (!token) {
+       return new Response(JSON.stringify({ message: "Token not found" }), {
+         status: 405,
+       });
+     }
+
   try {
     const response = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
