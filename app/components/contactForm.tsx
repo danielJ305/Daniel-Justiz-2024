@@ -123,7 +123,7 @@ const ContactUsForm: NextPage = () => {
           onExpired={handleExpired}
         />
         <button
-          disabled={isSubmitting || !isVerified}
+          disabled={!isVerified && isSubmitting}
           type='submit'
           className='ease-out duration-300 bg-slate-600 hover:bg-[#FF6500] px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
         >
