@@ -19,6 +19,7 @@ type FormFields = z.infer<typeof schema>;
 
 const ContactUsForm: NextPage = () => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [token, setToken] = useState<string | null>(null); // Token state to track ReCAPTCHA validation
   const [isVerified, setIsVerified] = useState(false);
 
   const {
@@ -31,20 +32,24 @@ const ContactUsForm: NextPage = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleCaptchaChange = (token: string | null) => {
-    if (token) {
-      setIsVerified(true); // Set verification state
+  // Handle ReCAPTCHA change event
+  const handleCaptchaChange = (newToken: string | null) => {
+    if (newToken) {
+      setToken(newToken); // Save the token
+      setIsVerified(true); // Mark as verified
     } else {
+      setToken(null);
       setIsVerified(false);
     }
   };
 
   const handleCaptchaExpired = () => {
-    setIsVerified(false);
+    recaptchaRef.current?.reset(); // Reset the ReCAPTCHA widget
+    setToken(null); // Clear the token
+    setIsVerified(false); // Mark as unverified
   };
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    const token = await recaptchaRef.current?.executeAsync();
     if (!token) {
       setError("root", { message: "Captcha validation failed" });
       return;
@@ -57,7 +62,7 @@ const ContactUsForm: NextPage = () => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...data, token }), // Include token in the request body
+        body: JSON.stringify({ ...data, token }), // Include the token in the request
       });
 
       if (!response.ok) {
@@ -65,8 +70,7 @@ const ContactUsForm: NextPage = () => {
       }
 
       // Reset the form on success
-          recaptchaRef.current?.reset();
-
+      reset();
     } catch (error) {
       setError("root", {
         message: error.message || "Failed to send, Please try again",
@@ -77,11 +81,10 @@ const ContactUsForm: NextPage = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       setTimeout(() => {
-            recaptchaRef.current?.reset();
-
+        reset();
       }, 3000);
     }
-  }, [isSubmitSuccessful, () => recaptchaRef.current?.reset()]);
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div>
@@ -122,8 +125,8 @@ const ContactUsForm: NextPage = () => {
         <ReCAPTCHA
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
           ref={recaptchaRef}
-          onChange={handleCaptchaChange}
-          onExpired={handleCaptchaExpired}
+          onChange={handleCaptchaChange} // Triggered when user completes the ReCAPTCHA
+          onExpired={handleCaptchaExpired} // Triggered when the ReCAPTCHA token expires
         />
 
         <button
