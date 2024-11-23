@@ -89,7 +89,7 @@ export function WorkShowcase() {
       <div className='flex mb-10 items-center'>
         <div
           onClick={workToggler}
-          className='work-toggler flex w-28 md:w-28 lg:w-28 h-6 justify-between bg-[#222]/75 rounded-full'
+          className='work-toggler flex w-28 min-w-28 md:w-28 lg:w-28 h-6 justify-between bg-[#222]/75 rounded-full'
         >
           <div
             id='circle-tgl-1'
