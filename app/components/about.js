@@ -12,6 +12,7 @@ import { useGSAP } from "@gsap/react";
 export function AboutIntro() {
     const container2 = useRef();
     const tl = useRef();
+    const introTl = useRef(); 
     useGSAP(
 
         () => {
@@ -23,7 +24,18 @@ export function AboutIntro() {
             .to('.graphic-design-frame', {
                 duration: 60,
                 y:0
-            }) 
+            })   
+            
+            introTl.current = gsap.timeline().to(".intro-text", 1.8, {
+              y: -10,
+              opacity: 1,
+              ease: "power4.out",
+              delay: 1,
+              // skewY: 7,
+              stagger: {
+                amount: 0.6,
+              },
+            });
             
         });
 
@@ -39,10 +51,10 @@ export function AboutIntro() {
       >
         <div className='md:basis-1/2 m-2 lg:m-4 p-4 bg-[#0B192C]/50 rounded-md rounded-md w-full lg:p-12 flex flex-col justify-between h-full md:h-[36rem] lg:h-[38rem] grow lg:grow-0'>
           <div>
-            <h1 className='text-[3rem] lg:text-[5.2rem] md:text-6xl leading-tight font-bold'>
+            <h1 className='text-[3rem] lg:text-[5.2rem] md:text-6xl leading-tight font-bold intro-text translate-y-[100px] opacity-0'>
               Designing Innovation, Building Your Vision.
             </h1>
-            <p className='text-xl lg:w-11/12 mt-6'>
+            <p className='text-xl lg:w-11/12 mt-6 intro-text translate-y-[100px] opacity-0'>
               "Hi, I'm Daniel Justiz, a seasoned graphic designer and web
               developer with over six years of experience. I specialize in
               creating engaging designs and building custom websites tailored to
@@ -54,10 +66,12 @@ export function AboutIntro() {
           </div>
           <div className='flex flex-row justify-between mt-6  w-full'>
             <div>
-              <p className='text-xl md:text-2xl text-amber-300'>10 Years Graphic Design Experience</p>
+              <p className='text-xl md:text-2xl text-amber-300 intro-text translate-y-[100px] opacity-0'>
+                10 Years Graphic Design Experience
+              </p>
             </div>
             <Link href='#contact'>
-              <button className='ease-out duration-300 bg-[#1E3E62] hover:bg-[#FF6500] cursor-pointer px-8 py-2 rounded-full text-lg'>
+              <button className='ease-out duration-300 bg-[#1E3E62] hover:bg-[#FF6500] cursor-pointer px-8 py-2 rounded-full text-lg intro-text translate-y-[100px] opacity-0'>
                 Lets Talk
               </button>
             </Link>
@@ -80,7 +94,7 @@ export function AboutIntro() {
             <Link
               href='#work'
               scroll={true}
-              className='ease-out duration-300 float-right bg-[#0B192C] hover:bg-[#FF6500] cursor-pointer px-8 py-2 rounded-full text-lg'
+              className='ease-out duration-300 float-right bg-[#0B192C] hover:bg-[#FF6500] cursor-pointer px-8 py-2 rounded-full text-lg intro-text translate-y-[100px] opacity-0'
             >
               See More
             </Link>

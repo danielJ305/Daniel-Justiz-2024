@@ -6,7 +6,7 @@
     position: fixed;
     left: 0;
     padding:2em;
-    z-index: 10;
+    z-index: 25;
 }
 
 .menu-overlay {
@@ -16,7 +16,7 @@
     height: 100vh;
     padding: 2em;
     background-color: #000000;
-    z-index: 2;
+    z-index: 20;
     clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
 }
 

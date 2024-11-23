@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { sendEmail } from "../../utils/send-email";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import type { NextPage } from "next";
 
 // Define the validation schema with Zod
 const schema = z.object({
@@ -17,7 +18,9 @@ const schema = z.object({
 // Define the form fields type based on the schema
 type FormFields = z.infer<typeof schema>;
 
-export default function ContactUsForm() {
+const ContactUsForm: NextPage = () => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [isVerified, setIsVerified] = useState(false);
 
   const {
     register,
@@ -28,6 +31,32 @@ export default function ContactUsForm() {
   } = useForm<FormFields>({
     resolver: zodResolver(schema),
   });
+
+    async function handleCaptchaSubmission(token: string | null) {
+      try {
+        if (token) {
+          await fetch("/api/email", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ token }),
+          });
+          setIsVerified(true);
+        }
+      } catch (e) {
+        setIsVerified(false);
+      }
+    }
+
+    const handleChange = (token: string | null) => {
+      handleCaptchaSubmission(token);
+    };
+
+    function handleExpired() {
+      setIsVerified(false);
+    }
 
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
@@ -86,8 +115,14 @@ export default function ContactUsForm() {
         {errors.message && (
           <div className='text-red-500'>{errors.message.message}</div>
         )}
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+          ref={recaptchaRef}
+          onChange={handleChange}
+          onExpired={handleExpired}
+        />
         <button
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isVerified}
           type='submit'
           className='ease-out duration-300 bg-slate-600 hover:bg-[#FF6500] px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
         >
@@ -105,3 +140,5 @@ export default function ContactUsForm() {
     </div>
   );
 }
+
+export default ContactUsForm;

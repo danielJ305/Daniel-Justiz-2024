@@ -1,10 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
+import axios from "axios";
 
 export async function POST(request: NextRequest) {
-  const { name, email, message } =
+  const { name, email, message, token } =
     await request.json();
+  const secretKey: string | undefined = process.env.RECAPTCHA_SECRET_KEY;
 
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -42,9 +44,22 @@ export async function POST(request: NextRequest) {
     });
 
   try {
+    const response = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
+    );
+    
+    if (response.data.success) {
     await sendMailPromise();
-    return NextResponse.json({ message: "Email sent" });
+    return NextResponse.json({ message: "Email Sent" });
+    } else {
+      return NextResponse.json({ message: "Failed to verify" }, {
+        status: 405,
+      });
+    }
+
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
+
+
 }

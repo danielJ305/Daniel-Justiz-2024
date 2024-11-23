@@ -19,11 +19,14 @@ export default function Home() {
       >
         <Experience />
       </section>
-      <section id='contact' className='flex justify-center items-center relative'>
+      <section
+        id='contact'
+        className='flex justify-center items-center relative'
+      >
         <Footer />
-        <div class='shape1'></div>
-        <div class='shape2'></div>
-        <div class='shape3'></div>
+        <div className='shape1'></div>
+        <div className='shape2'></div>
+        <div className='shape3'></div>
       </section>
     </div>
   );

@@ -185,12 +185,6 @@ export function Navbar() {
 
         <div className="menu-overlay w-screen sm:w-1/2 md:w-1/2 lg:w-1/4">
           <div className="menu-overlay-bar absolute">
-            {/* <div className="menu-close invisible" onClick={toggleMenu}>
-              <p>Close</p>
-            </div>
-            <div className="menu-close-icon absolute" onClick={toggleMenu}>
-              <p>&#x2715;</p>
-            </div> */}
             <div className="sidebar flex flex-col justify-between min-h-[80vh] mt-36">
               <div className="sidebar--top-container">
                 <div className="top-container__social-list flex flex-col justify-start">
