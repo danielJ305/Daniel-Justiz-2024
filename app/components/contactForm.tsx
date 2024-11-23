@@ -40,7 +40,6 @@ const ContactUsForm: NextPage = () => {
   };
 
   const handleCaptchaExpired = () => {
-    recaptchaRef.current?.reset();
     setIsVerified(false);
   };
 
@@ -66,7 +65,8 @@ const ContactUsForm: NextPage = () => {
       }
 
       // Reset the form on success
-      reset();
+          recaptchaRef.current?.reset();
+
     } catch (error) {
       setError("root", {
         message: error.message || "Failed to send, Please try again",
@@ -77,10 +77,11 @@ const ContactUsForm: NextPage = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       setTimeout(() => {
-        reset();
+            recaptchaRef.current?.reset();
+
       }, 3000);
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, () => recaptchaRef.current?.reset()]);
 
   return (
     <div>
