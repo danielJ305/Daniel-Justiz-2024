@@ -168,7 +168,7 @@ export function Navbar() {
       </div>
       <div className='menu-container'>
         <div className='menu-bar w-screen sm:w-1/2 md:w-1/2 lg:w-1/4'>
-          <div className='menu-open hover:text-amber-300'>
+          <div className='menu-open text-white hover:text-amber-300'>
             <Hamburger
               toggled={isMenuOpen}
               toggle={setIsMenuOpen}
@@ -176,7 +176,7 @@ export function Navbar() {
               size={48}
               rounded
               label='Show menu'
-              className='hamburger-icon text-white'
+              className='hamburger-icon bg-white'
               duration={0.6}
             />
           </div>
