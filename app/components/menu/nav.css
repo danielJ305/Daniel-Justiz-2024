@@ -40,5 +40,8 @@
 }
 
 .hamburger-icon {
-    color: white !important;
+    background-color: white;
+}
+.hamburger-icon div {
+    background-color: white;
 }
