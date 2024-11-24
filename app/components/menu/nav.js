@@ -8,7 +8,7 @@ import { Sling as Hamburger } from 'hamburger-react';
 import {
   RiBehanceFill,
   RiGithubFill,
-  RiInstagramLine,
+  // RiInstagramLine,
   RiLinkedinBoxLine,
 } from "react-icons/ri";
 
@@ -176,7 +176,7 @@ export function Navbar() {
               size={48}
               rounded
               label='Show menu'
-              className='hamburger-icon'
+              className='hamburger-icon text-white'
               duration={0.6}
             />
           </div>
@@ -192,28 +192,28 @@ export function Navbar() {
                     target='_blank'
                   >
                     <div className='pb-4 menu-link-item-holder'>
-                      <RiLinkedinBoxLine className='size-8 hover:text-amber-300' />
+                      <RiLinkedinBoxLine className='size-8 text-white hover:text-amber-300' />
                     </div>
                   </Link>
                   <Link href='https://github.com/danielJ305' target='_blank'>
                     <div className='pb-4 menu-link-item-holder'>
-                      <RiGithubFill className='size-8 hover:text-amber-300' />
+                      <RiGithubFill className='size-8 text-white hover:text-amber-300' />
                     </div>
                   </Link>
-                  <Link
+                  {/* <Link
                     href='https://www.instagram.com/danieljustfish/'
                     target='_blank'
                   >
                     <div className='pb-4 menu-link-item-holder'>
-                      <RiInstagramLine className='size-8 hover:text-amber-300' />
+                      <RiInstagramLine className='size-8 text-white hover:text-amber-300' />
                     </div>
-                  </Link>
+                  </Link> */}
                   <Link
                     href='https://www.behance.net/danieljustizMedia/'
                     target='_blank'
                   >
                     <div className='pb-4 menu-link-item-holder'>
-                      <RiBehanceFill className='size-8 hover:text-amber-300' />
+                      <RiBehanceFill className='size-8 text-white hover:text-amber-300' />
                     </div>
                   </Link>
                 </div>

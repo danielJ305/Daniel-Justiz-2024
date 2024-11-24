@@ -67,9 +67,9 @@ export function Footer() {
               <ul>
                 <Link
                   href='mailto:danieljustiz9508@gmail.com'
-                  className='flex items-center pt-4 hover:text-amber-300'
+                  className='flex items-center pt-4 '
                 >
-                  <MdOutlineEmail className='text-4xl' />
+                  <MdOutlineEmail className='text-4xl text-white hover:text-amber-300' />
                   <span className='text-xl ml-4 '>
                     danieljustiz9508@gmail.com
                   </span>
@@ -82,12 +82,12 @@ export function Footer() {
                   target='_blank'
                 >
                   <div className='pr-8 menu-link-item-holder'>
-                    <RiLinkedinBoxLine className='size-10 hover:text-amber-300' />
+                    <RiLinkedinBoxLine className='size-10 text-white hover:text-amber-300' />
                   </div>
                 </Link>
                 <Link href='https://github.com/danielJ305' target='_blank'>
                   <div className='pr-8 menu-link-item-holder'>
-                    <RiGithubFill className='size-10 hover:text-amber-300' />
+                    <RiGithubFill className='size-10 text-white hover:text-amber-300' />
                   </div>
                 </Link>
                 {/* <Link
@@ -103,7 +103,7 @@ export function Footer() {
                   target='_blank'
                 >
                   <div className='menu-link-item-holder'>
-                    <RiBehanceFill className='size-10 hover:text-amber-300' />
+                    <RiBehanceFill className='size-10 text-white hover:text-amber-300' />
                   </div>
                 </Link>
               </div>
@@ -114,7 +114,11 @@ export function Footer() {
           <p className='translate-y-4 pb-4'>
             Copyright © 2024 Daniel Justiz. Built on Next.JS
           </p>
-          <Link href='/' className='translate-y-4 text-amber-300'>
+          <Link
+            href='https://github.com/danielJ305/Daniel-Justiz-2024'
+            target='_blank'
+            className='translate-y-4 text-amber-300'
+          >
             Github Repo
           </Link>
         </div>
