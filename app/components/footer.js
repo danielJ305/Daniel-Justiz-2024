@@ -58,11 +58,12 @@ export function Footer() {
               <h2 className='text-lg'>Lets get to work!</h2>
               <h2 className='text-5xl md:text-6xl mb-4'>Contact Me</h2>
               <p className='w-11/12 lg:w-4/5 mt-8 text-lg'>
-                Looking to bring your brand to life with a stunning website or
-                captivating graphics? Whether you have a project in mind or just
-                need help getting started, let’s chat about how I can help make
-                your brand stand out. Reach out, and let’s create something
-                exceptional together!{" "}
+                My mission is to bring your vision to life by creating designs
+                and strategies that resonate with your audience and amplify your
+                brand's impact. From concept to execution, I’m committed to
+                delivering exceptional experiences and results that align with
+                your business objectives. Let’s work together to build something
+                extraordinary!
               </p>
               <ul>
                 <Link

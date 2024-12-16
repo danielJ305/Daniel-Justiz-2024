@@ -55,13 +55,13 @@ export function AboutIntro() {
               Designing Innovation, Building Your Vision.
             </h1>
             <p className='text-xl lg:w-11/12 mt-6 intro-text translate-y-[100px] opacity-0'>
-              "Hi, I'm Daniel Justiz, a seasoned graphic designer and web
-              developer with over six years of experience. I specialize in
-              creating engaging designs and building custom websites tailored to
-              meet client needs. With expertise in design tools like Adobe
-              Creative Suite and web platforms like WordPress, I’m committed to
-              delivering creative solutions that drive results. Let’s bring your
-              vision to life!"
+              Hi, I'm Danniel Justiz, with over 6 of experience in graphic design and web
+              development, I specialize in crafting compelling branding, custom
+              websites, and tailored digital marketing solutions. Leveraging
+              tools like Adobe Creative Suite and platforms like WordPress, I’m
+              passionate about helping businesses elevate their online presence,
+              engage their audiences, and achieve their goals in today’s digital
+              landscape.
             </p>
           </div>
           <div className='flex flex-row justify-between mt-6  w-full'>
