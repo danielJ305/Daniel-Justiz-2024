@@ -1,0 +1,21 @@
+.contact-container .contact-form-container {
+    padding-right: 4rem;
+}
+
+@media (max-width: 1024px) {
+
+.contact-container .contact-form-container {
+    padding-right: 0rem;
+}
+
+
+h2.contact-subheading {
+padding-bottom: 1.6rem;
+}
+}
+
+
+
+h2.contact-subheading {
+padding-bottom: 2rem;
+}

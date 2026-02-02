@@ -18,11 +18,11 @@ export function AboutIntro() {
         () => {
             tl.current = gsap.timeline({ repeat: 3 })
             .to('.graphic-design-frame', {
-                duration: 60,
-                y:-900
+                duration: 40,
+                y:-600
             })
             .to('.graphic-design-frame', {
-                duration: 60,
+                duration: 40,
                 y:0
             })   
             
@@ -30,7 +30,7 @@ export function AboutIntro() {
               y: -10,
               opacity: 1,
               ease: "power4.out",
-              delay: 1,
+              delay: 0,
               // skewY: 7,
               stagger: {
                 amount: 0.6,
@@ -52,22 +52,24 @@ export function AboutIntro() {
         <div className='md:basis-1/2 m-2 lg:m-4 p-4 bg-[#0B192C]/50 rounded-md rounded-md w-full lg:p-12 flex flex-col justify-between h-full md:h-[36rem] lg:h-[38rem] grow lg:grow-0 pt-6 md:pt-auto'>
           <div>
             <h1 className='text-[3rem] lg:text-[5.2rem] md:text-6xl leading-tight font-bold intro-text translate-y-[100px] opacity-0'>
-              Designing Innovation, Building Your Vision.
+              High-Performance Design. Scalable<br></br> E-commerce Solutions
             </h1>
             <p className='text-xl lg:w-11/12 mt-6 intro-text translate-y-[100px] opacity-0'>
-              Hi, I'm Daniel Justiz, with over 6 of experience in graphic design
-              and web development, I specialize in crafting compelling branding,
-              custom websites, and tailored digital marketing solutions.
-              Leveraging tools like Adobe Creative Suite and platforms like
-              WordPress, I’m passionate about helping businesses elevate their
-              online presence, engage their audiences, and achieve their goals
-              in today’s digital landscape.
+              I’m Daniel Justiz, a designer and developer focused on the
+              intersection of aesthetic excellence and technical precision. I
+              specialize in building high-converting Shopify storefronts and
+              custom WordPress ecosystems that help brands dominate their
+              market. By leveraging the full power of the Adobe Creative Suite
+              alongside AI-optimized workflows, I deliver sophisticated digital
+              products with a speed and accuracy that traditional methods can’t
+              match. I don’t just build websites; I engineer competitive digital
+              assets that engage audiences and drive measurable growth.
             </p>
           </div>
           <div className='flex flex-row justify-between mt-6  w-full'>
             <div>
               <p className='text-xl md:text-2xl text-amber-300 intro-text translate-y-[100px] opacity-0'>
-                NEW! Marketing Communications & Branding Package
+                Stop blending in. Start leading. Let’s work together.
               </p>
             </div>
             <Link href='#contact'>
@@ -77,8 +79,8 @@ export function AboutIntro() {
             </Link>
           </div>
         </div>
-        <div className='md:basis-1/4 m-2 lg:m-4 flex flex-col rounded-md w-full h-[32rem] sm:h-[36rem] md:h-[36rem] lg:h-[38rem]'>
-          <div className='w-auto h-full bg-[#222] overflow-hidden sm:min-w-[13rem] md:min-w-[15rem] '>
+        <div className='md:basis-1/4 m-2 lg:m-4 flex flex-col rounded-md w-full h-[32rem] sm:h-[36rem] md:h-[36rem] lg:h-[38rem] bg-[#132840]'>
+          <div className='w-auto h-full bg-[#222] overflow-hidden sm:min-w-[13rem] md:min-w-[15rem] '>  
             <div className='h-screen graphic-design-frame'>
               <Iframe
                 id='portfolio_1'
