@@ -66,9 +66,9 @@ export function AboutIntro() {
               assets that engage audiences and drive measurable growth.
             </p>
           </div>
-          <div className='flex flex-row justify-between mt-6  w-full'>
+          <div className='flex flex-row justify-between mt-6  w-full cta-quote'>
             <div>
-              <p className='text-xl md:text-2xl text-amber-300 intro-text translate-y-[100px] opacity-0'>
+              <p className='text-xl md:text-2xl text-amber-300 intro-text translate-y-[100px] opacity-0 '>
                 Stop blending in. Start leading. Let’s work together.
               </p>
             </div>
@@ -80,7 +80,7 @@ export function AboutIntro() {
           </div>
         </div>
         <div className='md:basis-1/4 m-2 lg:m-4 flex flex-col rounded-md w-full h-[32rem] sm:h-[36rem] md:h-[36rem] lg:h-[38rem] bg-[#132840]'>
-          <div className='w-auto h-full bg-[#222] overflow-hidden sm:min-w-[13rem] md:min-w-[15rem] '>  
+          <div className='w-auto h-full bg-[#222] overflow-hidden sm:min-w-[13rem] md:min-w-[15rem] '>
             <div className='h-screen graphic-design-frame'>
               <Iframe
                 id='portfolio_1'
@@ -92,7 +92,7 @@ export function AboutIntro() {
               ></Iframe>
             </div>
           </div>
-          <div className='w-auto h-32 bg-[#222] sm:min-w-[13rem] md:min-w-[15rem] p-8'>
+          <div className='w-auto h-32 bg-[#222] sm:min-w-[13rem] md:min-w-[15rem] p-8 cta-quote'>
             <Link
               href='#work'
               scroll={true}
