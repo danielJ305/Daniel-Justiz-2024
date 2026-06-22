@@ -6,8 +6,6 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { FiArrowLeft, FiArrowUpRight } from "react-icons/fi";
 import { FaQuoteLeft } from "react-icons/fa";
-import { MdOutlineEmail } from "react-icons/md";
-import ContactForm from "../contactForm";
 
 // Reusable fade-up wrapper for blog sections
 function Reveal({ children, delay = 0, className = "" }) {
