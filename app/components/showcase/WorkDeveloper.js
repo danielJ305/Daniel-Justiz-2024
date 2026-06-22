@@ -1,115 +1,130 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import "../../work.css";
 import { CiLogout } from "react-icons/ci";
-import Link from "next/link";
+import { projects } from "./projects";
+import ProjectCaseStudy from "./ProjectCaseStudy";
 
+const slides = projects;
+const TOTAL = slides.length;
 
 export function WorkDeveloper() {
+  const swiperRef = useRef(null);
+  const [realIndex, setRealIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
+
+  const openCaseStudy = (project) => {
+    setSelected(project);
+    if (typeof window !== "undefined") {
+      document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // Case-study view replaces the carousel inside this same section
+  if (selected) {
+    return (
+      <ProjectCaseStudy project={selected} onBack={() => setSelected(null)} />
+    );
+  }
+
   return (
-    <div className='section_container h-full flex flex-col lg:flex-row '>
-      <div
-        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
+    <div className='website-swiper'>
+      {/* Swiper */}
+      <Swiper
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={(swiper) => setRealIndex(swiper.realIndex % TOTAL)}
+        slidesPerView={1.1}
+        spaceBetween={16}
+        slidesPerGroup={1}
+        loop={true}
+        centeredSlides={false}
+        breakpoints={{
+          768: { slidesPerView: 1.5, spaceBetween: 20 },
+          1024: { slidesPerView: 2.8, spaceBetween: 30 },
+          1440: { slidesPerView: 2.7, spaceBetween: 40 },
+        }}
       >
-        <div className='section_col_media relative lg:absolute'>
-          <Link href='https://equitus.ai/' target='_blank'>
-            <Image
-              src='/webdev/equitus-ai.png'
-              className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
-              alt=''
-              width={500}
-              height={500}
-              quality={100}
-              unoptimized={true}
-              style={{ objectFit: "cover" }}
-            />
-          </Link>
-        </div>
-        <div className='lg:h-96 flex flex-col justify-between lg:items-center items-end text-right lg:text-center'>
-          <div className='section_col_caption order-2 lg:order-1'>
-            <span className='text-sm md:text-base'>Built on Wordpress</span>
-          </div>
-          <div className='section_col_title order-1 lg:order-2'>
-            <h2 className='text-2xl lg:text-3xl'>Equitus AI</h2>
-          </div>
-          <Link href='https://equitus.ai/' target='_blank'>
-            <div className='section_col_number order-3 flex lg:self-center'>
-              <div className='transition ease-out duration-300 bg-[#000000] hover:bg-[#FF6500] cursor-pointer p-2 rounded-full size-12 flex justify-center size-12 items-center text-lg shadow-md work-btn'>
-                <CiLogout className='size-6' />
+        {slides.map((slide, i) => (
+          <SwiperSlide key={i}>
+            <div
+              onClick={() => openCaseStudy(slide)}
+              className='relative section_col flex flex-col justify-center items-center
+                overflow-hidden rounded-2xl h-[55vh] min-h-[380px] lg:h-[60vh]
+                p-6 lg:p-12 cursor-pointer transition-all duration-300 project-slider'
+            >
+              <div className='section_col_media absolute inset-0'>
+                <Image
+                  src={slide.image}
+                  className='section_col_image h-full w-full object-cover
+                    transition duration-300 brightness-[0.3] hover:brightness-75 active:brightness-100'
+                  alt={slide.title}
+                  width={500}
+                  height={500}
+                  quality={100}
+                  unoptimized={true}
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className='relative z-10 h-72 lg:h-96 flex flex-col justify-between items-center text-center'>
+                <div className='section_col_caption order-1'>
+                  <span className='text-sm md:text-base project-description'>
+                    {slide.caption}
+                  </span>
+                </div>
+                <div className='section_col_title order-2'>
+                  <h2 className='text-2xl lg:text-3xl project-description'>
+                    {slide.title}
+                  </h2>
+                </div>
+                <div className='section_col_number order-3 flex self-center'>
+                  <div
+                    className='transition ease-out duration-300 bg-[#000000] hover:bg-[var(--accent)]
+                    cursor-pointer p-2 rounded-full size-12 flex justify-center
+                    items-center text-lg shadow-md work-btn'
+                  >
+                    <CiLogout className='size-6' />
+                  </div>
+                </div>
               </div>
             </div>
-          </Link>
-        </div>
-      </div>
-      <div
-        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
-      >
-        <div className='section_col_media relative lg:absolute'>
-          <Link href='https://go-freight.io/' target='_blank'>
-            <Image
-              src='/webdev/go-freight-hub.png'
-              className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
-              alt=''
-              width={500}
-              height={500}
-              quality={100}
-              unoptimized={true}
-              style={{ objectFit: "cover" }}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* Nav — mirrors your .website-nav structure */}
+      <div className='website-nav flex items-center gap-4 mt-6'>
+        <button
+          className='prev-slide circles'
+          onClick={() => swiperRef.current?.slidePrev()}
+        >
+          ‹
+        </button>
+
+        <span className='fraction'>
+          {realIndex + 1} / {TOTAL}
+        </span>
+
+        <button
+          className='next-slide circles'
+          onClick={() => swiperRef.current?.slideNext()}
+        >
+          ›
+        </button>
+
+        {/* Progress bar segments */}
+        <div className='website-nav-right flex gap-1'>
+          {Array.from({ length: TOTAL }).map((_, i) => (
+            <span
+              key={i}
+              className={`block h-1 w-8 transition-all duration-300 ${
+                i === realIndex ? "active bg-white" : "bg-white/30"
+              }`}
             />
-          </Link>
-        </div>
-        <div className='lg:h-96 flex flex-col justify-between lg:items-center items-end text-right lg:text-center'>
-          <div className='section_col_caption order-2 lg:order-1'>
-            <span className='text-sm md:text-base'>Built on Wordpress</span>
-          </div>
-          <div className='section_col_title order-1 lg:order-2'>
-            <h2 className='text-2xl lg:text-3xl'>GoFreight Hub</h2>
-          </div>
-          <Link href='https://go-freight.io/' target='_blank'>
-            <div className='section_col_number order-3 flex lg:self-center'>
-              <div className='transition ease-out duration-300 bg-[#000000] hover:bg-[#FF6500] cursor-pointer p-2 rounded-full size-12 flex justify-center size-12 items-center text-lg shadow-md work-btn'>
-                <CiLogout className='size-6' />
-              </div>
-            </div>
-          </Link>
-        </div>
-      </div>
-      <div
-        className='relative section_col basis-1/3 flex mb-12 lg:mb-auto lg:flex-col
-             justify-between lg:justify-center overflow-hidden lg:h-[60vh] lg:items-center lg:p-12 cursor-pointer transition-all duration-300 hover:basis-1/2 grow-0 md:grow'
-      >
-        <div className='section_col_media relative lg:absolute'>
-          <Link href='https://evolutionaryevents.com/' target='_blank'>
-            <Image
-              src='/webdev/EE2025_Website_Mockup.jpeg'
-              className='section_col_image h-full lg:h-[60vh] md:w-full object-cover transition duration-300 lg:brightness-[0.25] lg:hover:brightness-75 brightness-75 active:brightness-100'
-              alt=''
-              width={500}
-              height={500}
-              quality={100}
-              unoptimized={true}
-              style={{ objectFit: "cover" }}
-            />
-          </Link>
-        </div>
-        <div className='lg:h-96 flex flex-col justify-between lg:items-center items-end text-right lg:text-center'>
-          <div className='section_col_caption order-2 lg:order-1'>
-            <span className='text-sm md:text-base'>Built on Wordpress</span>
-          </div>
-          <div className='section_col_title order-1 lg:order-2'>
-            <h2 className='text-2xl lg:text-3xl'>Evolutionary Events</h2>
-          </div>
-          <Link href='https://evolutionaryevents.com/' target='_blank'>
-            <div className='section_col_number order-3 flex lg:self-center'>
-              <div className='transition ease-out duration-300 bg-[#000000] hover:bg-[#FF6500] cursor-pointer p-2 rounded-full size-12 flex justify-center size-12 items-center text-lg shadow-md work-btn'>
-                <CiLogout className='size-6' />
-              </div>
-            </div>
-          </Link>
+          ))}
         </div>
       </div>
     </div>

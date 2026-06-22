@@ -115,7 +115,7 @@ const ContactUsForm: React.FC = () => {
         <button
           type='submit'
           disabled={!captchaToken || isSubmitting}
-          className='ease-out duration-300 bg-slate-600 hover:bg-[#FF6500] px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
+          className='ease-out duration-300 bg-slate-600 hover:bg-[var(--accent)] hover:text-black px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
         >
           {isSubmitting ? "Loading..." : "Submit"}
         </button>

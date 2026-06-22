@@ -119,7 +119,7 @@ export function Navbar() {
         </Link>
       </div>
       <div className='menu-container'>
-        <div className='menu-bar w-screen sm:w-1/2 md:w-1/2 lg:w-1/4'>
+        <div className='menu-bar w-screen sm:w-1/2 md:w-8 lg:w-8'>
           <div className='menu-open text-white hover:text-amber-300'>
             <Hamburger
               toggled={isMenuOpen}

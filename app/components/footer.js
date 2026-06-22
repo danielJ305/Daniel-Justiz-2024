@@ -62,12 +62,7 @@ export function Footer() {
                 In a digital-first economy, your brand needs more than just a
                 presence—it needs a competitive edge. My mission is to bridge
                 the gap between complex technical requirements and world-class
-                design.
-           
-                From rapid e-commerce scaling to total brand transformations, I
-                utilize AI-facilitated development to ensure your project is
-                delivered with maximum efficiency and strategic impact. If you
-                are looking for a partner to help you lead your industry, let’s
+                design. If you are looking for a partner to help you lead your industry, let’s
                 work together.
               </p>
               <ul>

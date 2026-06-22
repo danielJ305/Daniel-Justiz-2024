@@ -93,11 +93,11 @@ export function WorkShowcase() {
         >
           <div
             id='circle-tgl-1'
-            className='circles bg-[#FF6500] w-12 h-6 rounded-full cursor-pointer'
+            className='circles bg-[var(--accent)] w-12 h-6 rounded-full cursor-pointer'
           ></div>
           <div
             id='circle-tgl-2'
-            className='circles bg-[#FF6500]/50 w-12 h-6 rounded-full cursor-pointer'
+            className='circles bg-[var(--accent-strong)] w-12 h-6 rounded-full cursor-pointer'
           ></div>
         </div>
         <div className='flex justify-between grow'>

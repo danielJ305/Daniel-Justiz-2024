@@ -16,6 +16,13 @@ p, span {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand accent — gold (matches Tailwind amber-300) */
+  --accent: #fcd34d;
+  --accent-hover: #fbbf24; /* slightly deeper gold for hover/active */
+  --accent-soft: rgba(252, 211, 77, 0.18); /* subtle fills / tints */
+  --accent-strong: rgba(252, 211, 77, 0.5); /* half-strength fills */
+  --accent-border: rgba(252, 211, 77, 0.35); /* tinted borders */
 }
 
 @media (prefers-color-scheme: dark) {
