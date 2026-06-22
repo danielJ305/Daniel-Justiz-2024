@@ -33,10 +33,11 @@
 }
 
 .menu-logo {
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   margin: 1rem;
+  z-index: 25;
 }
 
 .hamburger-icon {
