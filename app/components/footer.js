@@ -43,7 +43,7 @@ export function Footer() {
 
     return (
       <div ref={containerRef} className='flex flex-col z-10'>
-        <div className='contact-container flex flex-col md:flex-row container w-full h-full m-4 md:m-8 lg:m-12 pt-32 md:pt-32 lg:pt-44 pb-36 md:pb-72'>
+        <div className='contact-container flex flex-col md:flex-row container w-full h-full my-4 md:my-8 lg:my-12 px-4 md:px-8 lg:px-12 pt-32 md:pt-32 lg:pt-44 pb-36 md:pb-72'>
           <div className='basis-1/2 order-2 md:order-1 md:mt-0 mt-6 contact-form-container'>
             <div>
               <p className='w-11/12 lg:w-4/5 text-lg'>
