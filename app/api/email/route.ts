@@ -53,16 +53,23 @@ export async function POST(request: NextRequest) {
     const response = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
     );
-    
-    if (response.data.success) {
-    await sendMailPromise();
-    return NextResponse.json({ message: "Email Sent" });
-    } else {
-      return NextResponse.json({ message: "Failed to verify" }, {
-        status: 405,
-      });
-    }
 
+    // reCAPTCHA v3 returns a score (0.0 - 1.0) and the action name.
+    // Require a passing verification, a confident score, and the action
+    // we set on the client.
+    const { success, score, action } = response.data;
+    const isHuman =
+      success && score >= 0.5 && (action === "contact_form" || !action);
+
+    if (isHuman) {
+      await sendMailPromise();
+      return NextResponse.json({ message: "Email Sent" });
+    } else {
+      return NextResponse.json(
+        { message: "Failed reCAPTCHA verification", score },
+        { status: 405 }
+      );
+    }
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }

@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useCallback } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import ReCAPTCHA from "react-google-recaptcha";
+import {
+  GoogleReCaptchaProvider,
+  useGoogleReCaptcha,
+} from "react-google-recaptcha-v3";
 
 // Validation schema using Zod
 const schema = z.object({
@@ -16,9 +19,9 @@ const schema = z.object({
 // FormFields type based on the schema
 type FormFields = z.infer<typeof schema>;
 
-const ContactUsForm: React.FC = () => {
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+const ContactForm: React.FC = () => {
+  // reCAPTCHA v3 runs invisibly; we request a token on submit.
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const {
     register,
@@ -30,43 +33,43 @@ const ContactUsForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
 
-  // Handle reCAPTCHA token generation
-  const handleCaptchaChange = (token: string | null) => {
-    setCaptchaToken(token);
-  };
-
-  // Handle reCAPTCHA expiration
-  const handleCaptchaExpired = () => {
-    setCaptchaToken(null);
-    recaptchaRef.current?.reset();
-  };
-
-  const onSubmit: SubmitHandler<FormFields> = async (data) => {
-    if (!captchaToken) {
-      setError("root", { message: "Captcha validation is required" });
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ ...data, token: captchaToken }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send the email");
+  const onSubmit: SubmitHandler<FormFields> = useCallback(
+    async (data) => {
+      if (!executeRecaptcha) {
+        setError("root", {
+          message: "reCAPTCHA is still loading, please try again in a moment.",
+        });
+        return;
       }
 
-      reset(); // Clear form fields after successful submission
-    } catch (error) {
-      setError("root", {
-        message: error.message || "Failed to send, Please try again",
-      });
-    }
-  };
+      try {
+        // Generate a fresh v3 token for this submission.
+        const token = await executeRecaptcha("contact_form");
+
+        const response = await fetch("/api/email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ ...data, token }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to send the email");
+        }
+
+        reset(); // Clear form fields after successful submission
+      } catch (error) {
+        setError("root", {
+          message:
+            error instanceof Error
+              ? error.message
+              : "Failed to send, Please try again",
+        });
+      }
+    },
+    [executeRecaptcha, reset, setError]
+  );
 
   return (
     <div>
@@ -104,17 +107,9 @@ const ContactUsForm: React.FC = () => {
           <div className='text-red-500'>{errors.message.message}</div>
         )}
 
-        {/* Visible reCAPTCHA */}
-        <ReCAPTCHA
-          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-          ref={recaptchaRef}
-          onChange={handleCaptchaChange}
-          onExpired={handleCaptchaExpired}
-        />
-
         <button
           type='submit'
-          disabled={!captchaToken || isSubmitting}
+          disabled={isSubmitting}
           className='ease-out duration-300 bg-slate-600 hover:bg-[var(--accent)] hover:text-black px-6 py-3 disabled:bg-gray-500 rounded-md text-white mt-4 font-bold'
         >
           {isSubmitting ? "Loading..." : "Submit"}
@@ -131,6 +126,16 @@ const ContactUsForm: React.FC = () => {
         )}
       </form>
     </div>
+  );
+};
+
+const ContactUsForm: React.FC = () => {
+  return (
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+    >
+      <ContactForm />
+    </GoogleReCaptchaProvider>
   );
 };
 
