@@ -40,6 +40,45 @@
   z-index: 25;
 }
 
+/* Pixel-font "Daniel Justiz" wordmark with a layered extrude shadow. The
+   shadow offsets are in em so they scale with font-size. */
+.logo-wordmark {
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-family: var(--font-pixelify), system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  letter-spacing: 0;
+  color: #ECBE48;
+  white-space: nowrap;
+  text-shadow:
+    0.005em 0.009em 0 #C68E2A,
+    0.010em 0.018em 0 #C68E2A,
+    0.015em 0.027em 0 #C68E2A,
+    0.020em 0.036em 0 #C68E2A,
+    0.025em 0.045em 0 #C68E2A,
+    0.030em 0.054em 0 #C68E2A,
+    0.022em 0.085em 0.045em rgba(60, 42, 8, 0.26);
+}
+
+.logo-flag {
+  position: absolute;
+  left: 44%;
+  bottom: 100%;
+  margin-bottom: 0.15em;
+  width: 0.55em;
+  height: auto;
+  overflow: visible;
+  shape-rendering: crispEdges;
+}
+
+@media (min-width: 768px) {
+  .logo-wordmark {
+    font-size: 2.25rem;
+  }
+}
+
 .hamburger-icon {
     background-color: white;
 }

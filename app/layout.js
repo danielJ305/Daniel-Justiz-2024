@@ -1,4 +1,4 @@
-import { Monda, Jura } from "next/font/google";
+import { Monda, Jura, Pixelify_Sans } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/menu/nav";
 import { Analytics } from "@vercel/analytics/react";
@@ -18,6 +18,11 @@ const jura = Jura({
   subsets: ["latin"],
   display: "swap",
 });
+const pixelify = Pixelify_Sans({
+  variable: "--font-pixelify",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Daniel Justiz",
@@ -31,7 +36,9 @@ export default function RootLayout({ children }) {
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </head>
-      <body className={`${monda.variable} ${jura.variable} antialiased`}>
+      <body
+        className={`${monda.variable} ${jura.variable} ${pixelify.variable} antialiased`}
+      >
         <Navbar />
         {children}
         <Analytics />
