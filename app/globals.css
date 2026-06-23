@@ -170,9 +170,11 @@ body {
 }
 
 /*
- * On mobile the blobs are static, smaller glows. Animating a large
- * blur filter overwhelms mobile GPUs and freezes the page, so we keep
- * them as a one-time rasterized accent instead.
+ * On mobile, drop the blur filter entirely. A large animated/static
+ * blur filter keeps a heavy composited layer in GPU memory; while
+ * scrolling, mobile browsers discard and re-rasterize it, which makes
+ * sections flicker/"reappear" and lags the whole page. A radial-gradient
+ * reproduces the soft glow at almost no GPU cost.
  */
 @media (max-width: 768px) {
   .shape1,
@@ -180,15 +182,19 @@ body {
   .shape3 {
     animation: none;
     transform: none;
+    filter: none;
+    border-radius: 50%;
+    width: 26rem;
+    height: 26rem;
   }
   .shape1 {
-    filter: blur(4rem);
+    background: radial-gradient(circle, rgba(11, 25, 44, 0.85) 0%, transparent 70%);
   }
   .shape2 {
-    filter: blur(5rem);
+    background: radial-gradient(circle, rgba(30, 62, 98, 0.7) 0%, transparent 70%);
   }
   .shape3 {
-    filter: blur(5rem);
+    background: radial-gradient(circle, rgba(30, 62, 98, 0.6) 0%, transparent 70%);
   }
 }
 
