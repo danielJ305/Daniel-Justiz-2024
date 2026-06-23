@@ -38,7 +38,7 @@
   top: 0;
   /* Mirror the hamburger's padding (.menu-bar) so the logo lines up with
      the menu icon and gets matching breathing room from the edge. */
-  padding: 2em;
+  padding: 3em 2em 2em 2em;
   z-index: 25;
 }
 
