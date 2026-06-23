@@ -36,7 +36,9 @@
   position: fixed;
   right: 0;
   top: 0;
-  margin: 1rem;
+  /* Mirror the hamburger's padding (.menu-bar) so the logo lines up with
+     the menu icon and gets matching breathing room from the edge. */
+  padding: 2em;
   z-index: 25;
 }
 
