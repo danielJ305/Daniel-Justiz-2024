@@ -169,3 +169,26 @@ body {
   }
 }
 
+/*
+ * On mobile the blobs are static, smaller glows. Animating a large
+ * blur filter overwhelms mobile GPUs and freezes the page, so we keep
+ * them as a one-time rasterized accent instead.
+ */
+@media (max-width: 768px) {
+  .shape1,
+  .shape2,
+  .shape3 {
+    animation: none;
+    transform: none;
+  }
+  .shape1 {
+    filter: blur(4rem);
+  }
+  .shape2 {
+    filter: blur(5rem);
+  }
+  .shape3 {
+    filter: blur(5rem);
+  }
+}
+
