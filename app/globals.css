@@ -62,6 +62,12 @@ body {
   background: rgb(0,0,0);
 }
 
+/*
+ * Decorative blobs. Only `transform` is animated so the heavy blur is
+ * rasterized once and composited on the GPU. Animating width/height or
+ * border-radius here forces the blur to re-render every frame, which
+ * freezes mobile devices.
+ */
 .shape1 {
   position: absolute;
   top: 42%;
@@ -72,32 +78,24 @@ body {
   border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
   filter: blur(6rem);
   animation: shape1 20s infinite;
+  will-change: transform;
 }
 
 @keyframes shape1 {
   0% {
-    transform: translate(0, 0);
-    border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
+    transform: translate(0, 0) scale(1, 1);
   }
   25% {
-    transform: translate(-55%, -10%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 50rem;
-    width: 80rem;
+    transform: translate(-55%, -10%) scale(6, 4);
   }
   50% {
-    transform: translate(-90%, -10%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
+    transform: translate(-90%, -10%) scale(5, 3.5);
   }
   75% {
-    transform: translate(-30%, -10%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
-    height: 30rem;
-    width: 45rem;
+    transform: translate(-30%, -10%) scale(3.5, 2.5);
   }
   100% {
-    transform: translate(0%, 0%);
-    border-radius: 24% 76% 77% 23% / 30% 30% 70% 70%;
+    transform: translate(0%, 0%) scale(1, 1);
   }
 }
 
@@ -111,30 +109,24 @@ body {
   border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
   filter: blur(12rem);
   animation: shape2 35s infinite;
+  will-change: transform;
 }
 
 @keyframes shape2 {
   0% {
-    transform: translate(0, 0);
-    border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
+    transform: translate(0, 0) scale(1, 1);
   }
   25% {
-    transform: translate(-55%, -55%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 50rem;
-    width: 50rem;
+    transform: translate(-55%, -55%) scale(2.8, 4);
   }
   50% {
-    transform: translate(-70%, -70%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
+    transform: translate(-70%, -70%) scale(2.8, 4);
   }
   75% {
-    transform: translate(-30%, -30%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
+    transform: translate(-30%, -30%) scale(2, 3);
   }
   100% {
-    transform: translate(0%, 0%);
-    border-radius: 73% 27% 77% 23% / 53% 4% 96% 47%;
+    transform: translate(0%, 0%) scale(1, 1);
   }
 }
 
@@ -148,30 +140,32 @@ body {
   border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
   filter: blur(14rem);
   animation: shape3 35s infinite;
+  will-change: transform;
 }
 
 @keyframes shape3 {
   0% {
-    transform: translate(0, 0);
-    border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
+    transform: translate(0, 0) scale(1, 1);
   }
   25% {
-    transform: translate(-125%, -25%);
-    border-radius: 28% 72% 81% 19% / 78% 25% 75% 22%;
-    height: 50rem;
-    width: 50rem;
+    transform: translate(-125%, -25%) scale(4, 4);
   }
   50% {
-    transform: translate(-90%, -35%);
-    border-radius: 60% 40% 0% 100% / 1% 74% 26% 99%;
+    transform: translate(-90%, -35%) scale(4, 4);
   }
   75% {
-    transform: translate(-30%, -40%);
-    border-radius: 0% 100% 100% 0% / 0% 100% 100% 0%;
+    transform: translate(-30%, -40%) scale(2.5, 2.5);
   }
   100% {
-    transform: translate(0%, 0%);
-    border-radius: 70% 30% 80% 20% / 42% 25% 75% 58%;
+    transform: translate(0%, 0%) scale(1, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape1,
+  .shape2,
+  .shape3 {
+    animation: none;
   }
 }
 
