@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex w-max px-4 md:px-0 md:w-full flex-col md:pr-10 lg:pr-20 md:max-w-full'
+        className='flex w-full px-4 md:px-0 flex-col md:pr-10 lg:pr-20 md:max-w-full'
       >
         <input
           type='text'
