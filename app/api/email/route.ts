@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
         if (!err) {
           resolve("Email sent");
         } else {
-          reject(err.message);
+          reject(err);
         }
       });
     });
@@ -49,30 +49,48 @@ export async function POST(request: NextRequest) {
        });
      }
 
+  // Verify the reCAPTCHA token first, so a verification failure is
+  // reported separately from an email-sending failure.
+  let recaptcha;
   try {
     const response = await axios.post(
       `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`
     );
-
-    // reCAPTCHA v3 returns a score (0.0 - 1.0) and the action name.
-    // Require a passing verification, a confident score, and the action
-    // we set on the client.
-    const { success, score, action } = response.data;
-    const isHuman =
-      success && score >= 0.5 && (action === "contact_form" || !action);
-
-    if (isHuman) {
-      await sendMailPromise();
-      return NextResponse.json({ message: "Email Sent" });
-    } else {
-      return NextResponse.json(
-        { message: "Failed reCAPTCHA verification", score },
-        { status: 405 }
-      );
-    }
+    recaptcha = response.data;
   } catch (err) {
-    return NextResponse.json({ error: err }, { status: 500 });
+    console.error("reCAPTCHA verification request failed:", err);
+    return NextResponse.json(
+      { message: "Could not reach reCAPTCHA verification" },
+      { status: 502 }
+    );
   }
 
+  // reCAPTCHA v3 returns a score (0.0 - 1.0) and the action name.
+  // Require a passing verification, a confident score, and the action
+  // we set on the client.
+  const { success, score, action } = recaptcha;
+  const isHuman =
+    success && score >= 0.5 && (action === "contact_form" || !action);
 
+  if (!isHuman) {
+    console.error("reCAPTCHA rejected submission:", recaptcha);
+    return NextResponse.json(
+      { message: "Failed reCAPTCHA verification", score },
+      { status: 405 }
+    );
+  }
+
+  // reCAPTCHA passed — now try to send the email.
+  try {
+    await sendMailPromise();
+    return NextResponse.json({ message: "Email Sent" });
+  } catch (err) {
+    // Surface the real cause (e.g. Gmail auth failure) in the server logs.
+    console.error("Email send failed:", err);
+    const detail = err instanceof Error ? err.message : String(err);
+    return NextResponse.json(
+      { message: "Email could not be sent", detail },
+      { status: 500 }
+    );
+  }
 }
