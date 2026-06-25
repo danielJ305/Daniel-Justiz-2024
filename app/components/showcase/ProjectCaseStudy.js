@@ -167,13 +167,16 @@ export function ProjectCaseStudy({ project, onBack }) {
             </button>
 
             <div className='flex items-center gap-5 text-sm'>
-              <Link href='#about-me' className='text-white/70 hover:text-amber-300 transition'>
+              <Link href='/#about-me' className='text-white/70 hover:text-amber-300 transition'>
                 About
               </Link>
-              <Link href='#work' className='text-white/70 hover:text-amber-300 transition'>
+              <Link href='/#work' className='text-white/70 hover:text-amber-300 transition'>
                 Work
               </Link>
-              <Link href='#contact' className='text-white/70 hover:text-amber-300 transition'>
+              <Link href='/my-process' className='text-white/70 hover:text-amber-300 transition'>
+                My Process
+              </Link>
+              <Link href='/#contact' className='text-white/70 hover:text-amber-300 transition'>
                 Contact
               </Link>
             </div>

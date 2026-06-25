@@ -68,7 +68,17 @@ background-color: var(--accent-hover);
   }
 
   .website-swiper  {
-    z-index: 100 !important;   
+    z-index: 100 !important;
+  }
+
+  /* Full-bleed: break the carousel out to 100vw regardless of the
+     container's margins/padding. The nav stays in normal flow so it
+     remains aligned with the section. */
+  .website-swiper > .swiper {
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
 .project-slider {

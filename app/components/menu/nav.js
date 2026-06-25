@@ -156,7 +156,7 @@ export function Navbar() {
                       scroll={true}
                       toggle={setIsMenuOpen}
                       onClick={toggleMenu}
-                      href='#about-me'
+                      href='/#about-me'
                       className='menu-link-item-holder py-4 hover:text-amber-300'
                     >
                       About Me -
@@ -165,16 +165,24 @@ export function Navbar() {
                       scroll={true}
                       toggle={setIsMenuOpen}
                       onClick={toggleMenu}
-                      href='#work'
+                      href='/#work'
                       className='menu-link-item-holder py-4 hover:text-amber-300'
                     >
                       My Work -
                     </Link>
                     <Link
+                      toggle={setIsMenuOpen}
+                      onClick={toggleMenu}
+                      href='/my-process'
+                      className='menu-link-item-holder py-4 hover:text-amber-300'
+                    >
+                      My Process -
+                    </Link>
+                    <Link
                       scroll={true}
                       toggle={setIsMenuOpen}
                       onClick={toggleMenu}
-                      href='#contact'
+                      href='/#contact'
                       className='menu-link-item-holder py-4 hover:text-amber-300'
                     >
                       Contact Me -

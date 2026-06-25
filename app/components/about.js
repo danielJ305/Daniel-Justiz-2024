@@ -66,9 +66,9 @@ export function AboutIntro() {
         </motion.p>
 
         <motion.div variants={item} className='flex gap-4 mt-10 flex-wrap justify-center'>
-          <Link href='#contact'>
+          <Link href='/my-process'>
             <button className='ease-out duration-300 bg-[#1E3E62] hover:bg-[var(--accent)] hover:text-black cursor-pointer px-8 py-2.5 rounded-xl text-lg'>
-              Lets Talk
+              My Process
             </button>
           </Link>
           <Link href='#work'>

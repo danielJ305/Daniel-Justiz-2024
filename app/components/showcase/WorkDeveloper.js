@@ -38,14 +38,14 @@ export function WorkDeveloper() {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => setRealIndex(swiper.realIndex % TOTAL)}
         slidesPerView={1.1}
-        spaceBetween={16}
+        spaceBetween={0}
         slidesPerGroup={1}
         loop={true}
         centeredSlides={false}
         breakpoints={{
-          768: { slidesPerView: 1.5, spaceBetween: 20 },
-          1024: { slidesPerView: 2.8, spaceBetween: 30 },
-          1440: { slidesPerView: 2.7, spaceBetween: 40 },
+          768: { slidesPerView: 1.5, spaceBetween: 0 },
+          1024: { slidesPerView: 2.8, spaceBetween: 0 },
+          1440: { slidesPerView: 2.7, spaceBetween: 0 },
         }}
       >
         {slides.map((slide, i) => (
@@ -53,8 +53,8 @@ export function WorkDeveloper() {
             <div
               onClick={() => openCaseStudy(slide)}
               className='relative section_col flex flex-col justify-center items-center
-                overflow-hidden rounded-2xl h-[55vh] min-h-[380px] lg:h-[60vh]
-                p-6 lg:p-12 cursor-pointer transition-all duration-300 project-slider'
+                overflow-hidden h-[80vh] min-h-[380px]
+                cursor-pointer transition-all duration-300 project-slider'
             >
               <div className='section_col_media absolute inset-0'>
                 <Image
