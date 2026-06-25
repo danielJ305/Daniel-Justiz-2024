@@ -323,8 +323,8 @@ export default function MyProcess() {
                       src={p.image}
                       alt={p.title}
                       fill
-                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px'
-                      quality={90}
+                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 60vw, 700px'
+                      quality={100}
                       className='object-cover transition duration-500 group-hover:scale-105'
                     />
                   </div>

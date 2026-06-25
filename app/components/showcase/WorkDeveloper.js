@@ -63,8 +63,8 @@ export function WorkDeveloper() {
                     transition duration-300 brightness-[0.3] hover:brightness-75 active:brightness-100'
                   alt={slide.title}
                   fill
-                  sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 35vw'
-                  quality={90}
+                  sizes='(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw'
+                  quality={100}
                 />
               </div>
               <div className='relative z-10 h-72 lg:h-96 flex flex-col justify-between items-center text-center'>

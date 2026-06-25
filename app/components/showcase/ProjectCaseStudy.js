@@ -95,7 +95,7 @@ function HeroMedia({ image, video, title }) {
           alt={title}
           fill
           sizes='(max-width: 1280px) 100vw, 1200px'
-          quality={90}
+          quality={100}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             ready ? "opacity-0" : "opacity-100"
           }`}
