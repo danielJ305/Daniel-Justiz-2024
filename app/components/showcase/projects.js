@@ -7,7 +7,7 @@ export const projects = [
     id: "dynaxe-workforce",
     title: "Dynaxe Workforce",
     caption: "Built on Wordpress",
-    image: "/webdev/dynaxeworkforce_website_cards.jpg",
+    image: "/webdev/dynaxe-website-board.jpg",
     video: {
       src: "/webdev/dynaxe-hero.mp4",
       poster: "/webdev/dynaxe-hero-poster.jpg",
@@ -95,7 +95,7 @@ export const projects = [
     id: "mangrove-coast",
     title: "Mangrove Coast",
     caption: "Built on Shopify",
-    image: "/webdev/mangrovecoast_website_cards.jpg",
+    image: "/webdev/mangrove-website-board.jpg",
     video: {
       src: "/webdev/mangrovecoast-hero.mp4",
       poster: "/webdev/mangrovecoast-hero-poster.jpg",
