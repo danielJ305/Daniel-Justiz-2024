@@ -121,12 +121,17 @@ export function Navbar() {
                   <Link
                     href='https://www.linkedin.com/in/daniel-justiz-a76a3218a/'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <div className='pb-4 menu-link-item-holder'>
                       <RiLinkedinBoxLine className='size-8 text-white hover:text-amber-300' />
                     </div>
                   </Link>
-                  <Link href='https://github.com/danielJ305' target='_blank'>
+                  <Link
+                    href='https://github.com/danielJ305'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                  >
                     <div className='pb-4 menu-link-item-holder'>
                       <RiGithubFill className='size-8 text-white hover:text-amber-300' />
                     </div>
@@ -142,6 +147,7 @@ export function Navbar() {
                   <Link
                     href='https://www.behance.net/danieljustizMedia/'
                     target='_blank'
+                    rel='noopener noreferrer'
                   >
                     <div className='pb-4 menu-link-item-holder'>
                       <RiBehanceFill className='size-8 text-white hover:text-amber-300' />

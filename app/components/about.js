@@ -24,6 +24,17 @@ const item = {
   },
 };
 
+// The hero headline is the page's Largest Contentful Paint element. It must
+// paint on the server-rendered HTML, so it never starts at opacity:0 — only a
+// subtle slide that doesn't gate the text behind JS hydration.
+const heading = {
+  hidden: { y: 28 },
+  visible: {
+    y: 0,
+    transition: { duration: 0.75, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export function AboutIntro() {
   return (
     <div className='flex justify-center w-full mt-32 mb-12 lg:mb-4 px-4'>
@@ -43,7 +54,7 @@ export function AboutIntro() {
         </motion.div>
 
         <motion.h1
-          variants={item}
+          variants={heading}
           className='text-[2.8rem] md:text-6xl lg:text-[4.2rem] mt-8 leading-tight font-bold'
         >
           Websites That Convert. <br /> Brands That Dominate.

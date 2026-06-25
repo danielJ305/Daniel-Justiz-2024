@@ -81,12 +81,17 @@ export function Footer() {
                 <Link
                   href='https://www.linkedin.com/in/daniel-justiz-a76a3218a/'
                   target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <div className='pr-8 menu-link-item-holder'>
                     <RiLinkedinBoxLine className='size-10 text-white hover:text-amber-300' />
                   </div>
                 </Link>
-                <Link href='https://github.com/danielJ305' target='_blank'>
+                <Link
+                  href='https://github.com/danielJ305'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
                   <div className='pr-8 menu-link-item-holder'>
                     <RiGithubFill className='size-10 text-white hover:text-amber-300' />
                   </div>
@@ -102,6 +107,7 @@ export function Footer() {
                 <Link
                   href='https://www.behance.net/danieljustizMedia/'
                   target='_blank'
+                  rel='noopener noreferrer'
                 >
                   <div className='menu-link-item-holder'>
                     <RiBehanceFill className='size-10 text-white hover:text-amber-300' />
@@ -118,6 +124,7 @@ export function Footer() {
           <Link
             href='https://github.com/danielJ305/Daniel-Justiz-2024'
             target='_blank'
+            rel='noopener noreferrer'
             className='translate-y-4 text-amber-300'
           >
             Github Repo

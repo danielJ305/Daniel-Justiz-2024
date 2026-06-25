@@ -59,14 +59,12 @@ export function WorkDeveloper() {
               <div className='section_col_media absolute inset-0'>
                 <Image
                   src={slide.image}
-                  className='section_col_image h-full w-full object-cover
+                  className='section_col_image object-cover
                     transition duration-300 brightness-[0.3] hover:brightness-75 active:brightness-100'
                   alt={slide.title}
-                  width={500}
-                  height={500}
-                  quality={100}
-                  unoptimized={true}
-                  style={{ objectFit: "cover" }}
+                  fill
+                  sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 35vw'
+                  quality={90}
                 />
               </div>
               <div className='relative z-10 h-72 lg:h-96 flex flex-col justify-between items-center text-center'>

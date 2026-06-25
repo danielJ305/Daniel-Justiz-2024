@@ -322,11 +322,10 @@ export default function MyProcess() {
                     <Image
                       src={p.image}
                       alt={p.title}
-                      width={1200}
-                      height={750}
-                      quality={100}
-                      unoptimized
-                      className='h-full w-full object-cover transition duration-500 group-hover:scale-105'
+                      fill
+                      sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px'
+                      quality={90}
+                      className='object-cover transition duration-500 group-hover:scale-105'
                     />
                   </div>
                   <h3 className='mt-5 text-2xl text-white flex items-center gap-2'>

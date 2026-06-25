@@ -93,10 +93,9 @@ function HeroMedia({ image, video, title }) {
         <Image
           src={poster}
           alt={title}
-          width={1400}
-          height={800}
-          quality={100}
-          unoptimized
+          fill
+          sizes='(max-width: 1280px) 100vw, 1200px'
+          quality={90}
           className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
             ready ? "opacity-0" : "opacity-100"
           }`}
@@ -393,7 +392,6 @@ export function ProjectCaseStudy({ project, onBack }) {
                             alt={testimonial.name}
                             width={48}
                             height={48}
-                            unoptimized
                             className='h-12 w-12 rounded-full object-cover'
                           />
                         ) : (
